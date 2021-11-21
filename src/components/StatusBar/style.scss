@@ -1,0 +1,38 @@
+.StatusBar-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--statusBarBackgroundColor);
+  color: var(--statusBarFontColor);
+  font-size: var(--statusBarFontSize);
+  padding: calc(4 * var(--onePxToRem)) calc(10 * var(--onePxToRem));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  >* {
+    flex: 1;
+  }
+
+  .LeftStatusBar-container {
+    display: flex;
+
+    >* {
+      padding-right: calc(10 * var(--onePxToRem));
+
+      :hover {
+        background-color: var(--menubarBackgroundColor);
+      }
+    }
+  }
+
+  .RightStatusBar-container {
+    display: flex;
+    justify-content: flex-end;
+
+    >* {
+      padding-right: calc(10 * var(--onePxToRem));
+
+    }
+  }
+}

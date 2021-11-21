@@ -1,0 +1,77 @@
+@import '/src/assets/scss/mixins.scss';
+
+.Accordion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-left: calc(5 * var(--onePxToRem));
+
+  .Accordion-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    // border: 1px solid red;
+
+    >* {
+      flex: 1;
+    }
+
+    .LeftSideActionIcons-container {
+      font-size: calc(11 * var(--onePxToRem));
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      text-transform: uppercase;
+      color: white;
+      width: 100%;
+      @include show-ellipses-for-long-text;
+    }
+
+    .RightSideActionIcons-container {
+      display: none;
+      justify-content: flex-end;
+
+      >* {
+        margin-left: calc(5 * var(--onePxToRem));
+      }
+    }
+  }
+
+  .Accordion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-left: calc(5 * var(--onePxToRem));
+  }
+
+}
+
+.collapsed-accordion-height {
+  height: calc(15 * var(--onePxToRem));
+
+  .LeftSideActionIcons-container {
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.expanded-accordion-height {
+  height: calc(280 * var(--onePxToRem));
+
+  .LeftSideActionIcons-container {
+    svg {
+      transform: rotate(0deg);
+      font-size: calc(14 * var(--onePxToRem));
+      font-weight: inherit;
+    }
+  }
+}

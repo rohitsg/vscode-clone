@@ -1,0 +1,86 @@
+.Menubar-container {
+    --menubarHeight: calc(22 * var(--onePxToRem));
+
+    display: flex;
+    width: 100%;
+    background-color: var(--menubarBackgroundColor);
+    color: var(--menubarFontColor);
+    height: var(--menubarHeight);
+    align-items: center;
+
+    .MenubarItem {
+        list-style-type: none;
+        font-size: calc(14 * var(--onePxToRem));
+        cursor: default;
+        position: relative;
+        // flex-basis: 0 0 auto;
+        padding: calc(5 * var(--onePxToRem));
+
+        .MenubarItemOptionsWindow-container {
+            position: absolute;
+            z-index: 4;
+            top: var(--menubarHeight);
+            left: 0;
+            background-color: var(--menubarBackgroundColor);
+            min-width: var(--menubarOptionsWindowWidth);
+            border: 1px solid var(--menubarOptionsWindowBorderColor);
+            border-radius: var(--menubarOptionsWindowBorderRadius);
+
+            ul {
+                list-style-type: none;
+                width: 100%;
+
+                li {
+                    position: relative;
+                    padding: calc(3 * var(--onePxToRem)) calc(20 * var(--onePxToRem));
+                    display: flex;
+                    justify-content: space-between;
+
+                    span:nth-child(2) {
+                        color: rgba(255, 255, 255, 0.5);
+                    }
+
+                    .hasSubmenu {
+                        position: absolute;
+                        left: calc(var(--menubarOptionsWindowWidth) - 3px);
+                        top: -1px;
+                    }
+                }
+
+                li:hover {
+                    background-color: #3f97e6;
+                }
+
+                .submenu-arrow {
+                    color: white;
+                }
+
+                li.submenu-arrow::after {
+                    position: absolute;
+                    content: '';
+                    border: calc(4 * var(--onePxToRem)) solid transparent;
+                    border-width: calc(4 * var(--onePxToRem));
+                    border-left-color: white;
+                    height: calc(4 * var(--onePxToRem));
+                    width: calc(4 * var(--onePxToRem));
+                    left: calc(100% - calc(12 * var(--onePxToRem)));
+                    top: calc(6 * var(--onePxToRem));
+                }
+            }
+        }
+
+    }
+
+    .menubarOnClickBackgroundColor {
+        background-color: var(--menubarOnClickBackgroundColor);
+    }
+
+}
+
+.spearator {
+    width: 100%;
+    display: inline-block;
+    height: 0.5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}

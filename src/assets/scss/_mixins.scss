@@ -1,0 +1,6 @@
+/* mixins */
+@mixin show-ellipses-for-long-text {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

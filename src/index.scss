@@ -1,0 +1,71 @@
+@import '/src/assets/scss/mixins.scss';
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Ubuntu, sans-serif;
+  overflow: hidden;
+
+  --onePxToRem: 0.0625rem;
+
+  /* menubar */
+  --menubarBackgroundColor: #33393B;
+  --menubarFontColor: #EEEEEC;
+  --menubarOnClickBackgroundColor: #464C4C;
+
+  /* menubarOptionsWindoWidth */
+  --menubarOptionsWindowWidth: calc(320 * var(--onePxToRem));
+  --menubarOptionsWindowBorderColor: #212526;
+  --menubarOptionsWindowBorderRadius: calc(2 * var(--onePxToRem));
+
+  /* editorArea */
+  --editorAreaBackgroundColor: #171520;
+  /* Sidebar */
+  --editorAreaSidebarWidth: calc(50 * var(--onePxToRem));
+  /* SidebarDrawableWindow */
+  --editorAreaSidebarDrawableWindowMinWidth: calc(170 * var(--onePxToRem));
+  --editorAreaSidebarDrawableWindowBackgroundColor: #241B2F;
+  --editorAreaSidebarDrawableWindowForegroundColor: #ffffff99;
+
+  /* closable tabs container */
+  --editorAreaClosableTabsBackgroundColor: rgba(23, 21, 32, 0.9);
+  --editorAreaClosableTabsActionsBackgroundColor: rgba(23, 21, 32, 0.8);
+
+
+
+  /* statusBar */
+  --statusBarBackgroundColor: #241B2F;
+  --statusBarFontColor: rgba(200, 200, 200, 0.9);
+  --statusBarFontSize: calc(7 * var(--onePxToRem));
+
+  /* z-indexes */
+  /*
+  zIndex For SidebarDrawableWindow: 2;
+  zIndex For Tooltip: 3;
+  zIndex For menubar options window: 5;
+  */
+
+  /* tooltip */
+  --tooltipBackgroundColor: var(--menubarBackgroundColor);
+
+
+  /* debug */
+  --debug: 1px solid red;
+
+  /* notes */
+  /* Adding styles for class - .ResizablePlaceholder-container at individual style.scss instead of ResizablePlaceholder component */
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}

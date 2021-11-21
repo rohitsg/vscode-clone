@@ -1,0 +1,47 @@
+@import '/src/assets/scss/mixins.scss';
+
+// TextIcon
+.TextIcon-container {
+
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  font-size: calc(12 * var(--onePxToRem));
+
+  :hover {
+    background-color: var(--menubarBackgroundColor);
+  }
+
+  // tooltip
+  .Tooltip-container {
+    display: none;
+    z-index: 5;
+    background-color: black;
+    color: white;
+    height: calc(22 * var(--onePxToRem));
+    line-height: calc(22 * var(--onePxToRem));
+    font-size: calc(12 * var(--onePxToRem));
+    width: auto;
+    max-width: 12.5rem; //200px , max-width dont work with calc(200*var(--onePxToRem))
+    @include show-ellipses-for-long-text;
+
+    position: absolute;
+    content: '';
+    bottom: calc(20 * var(--onePxToRem));
+    opacity: 0.8;
+    padding: 0 calc(5 * var(--onePxToRem));
+  }
+
+  .Tooltip-container::after {
+    position: absolute;
+    content: '';
+    border-top-color: black;
+    left: calc(10 * var(--onePxToRem));
+    top: 95%;
+  }
+
+  span:hover+.Tooltip-container {
+    display: block;
+  }
+}

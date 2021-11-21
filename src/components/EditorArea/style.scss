@@ -1,0 +1,324 @@
+@import '/src/assets/scss/mixins.scss';
+
+.EditorArea-container {
+  // variables
+  --headerWidth: calc(35 * var(--onePxToRem));
+
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - calc(44 * var(--onePxToRem)));
+  margin-bottom: calc(21 * var(--onePxToRem));
+  position: relative;
+
+
+  // .ResizablePlaceholder-container {
+  //   position: absolute;
+  //   content: '';
+  //   height: 100%;
+  //   width: 5px;
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   background-color: red;
+
+  .SidebarDrawableWindow-container {
+    min-width: var(--editorAreaSidebarDrawableWindowMinWidth);
+    flex-basis: 0 0 var(--editorAreaSidebarDrawableWindowMinWidth);
+    position: absolute;
+    z-index: 2;
+    // left: calc(100vw - calc(218 * var(--onePxToRem)));
+    left: calc(100% - calc(var(--editorAreaSidebarDrawableWindowMinWidth) + calc(45 * var(--onePxToRem))));
+    height: 100%;
+    background-color: var(--editorAreaSidebarDrawableWindowBackgroundColor);
+    color: var(--editorAreaSidebarDrawableWindowForegroundColor);
+    // resize: horizontal;
+
+
+    .Header-container {
+      height: var(--headerWidth);
+      padding: calc(5 * var(--onePxToRem)) calc(15 * var(--onePxToRem));
+      padding-left: calc(20 * var(--onePxToRem));
+      font-size: calc(10 * var(--onePxToRem));
+      font-weight: 400;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // >*:not(:first-child) {
+      //   margin-right: 0px;
+      // }
+
+      .windowName {
+        margin-right: calc(10 * var(--onePxToRem));
+        min-width: calc(10 * var(--onePxToRem));
+        max-width: calc(40 * var(--onePxToRem));
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .Content-container {
+      padding: 0 calc(5 * var(--onePxToRem)) calc(6 * var(--onePxToRem));
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - var(--headerWidth));
+      width: calc(170 * var(--onePxToRem));
+    }
+
+    // }
+  }
+
+  // .ResizablePlaceholder-container:hover {
+  //   cursor: col-resize;
+  // }
+
+  .Sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--editorAreaBackgroundColor);
+    flex-basis: 0 0 var(--editorAreaSidebarWidth);
+
+    >* {
+      span {
+        width: calc(49 * var(--onePxToRem));
+        height: calc(49 * var(--onePxToRem));
+        color: rgba(180, 180, 180, 0.5);
+
+        :hover {
+          color: rgba(180, 180, 180, 0.9);
+        }
+
+        svg {
+          width: 98%;
+          height: 98%;
+          padding: calc(13 * var(--onePxToRem));
+
+        }
+      }
+    }
+  }
+
+  .EditorSpace-container {
+    // flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .OpenedFilesTabContainer-container {
+      flex-basis: calc(35 * var(--onePxToRem));
+      background-color: var(--editorAreaBackgroundColor);
+      padding: calc(5 * var(--onePxToRem)) calc(10 * var(--onePxToRem));
+      padding-right: 0;
+      width: calc(761 * var(--onePxToRem));
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      overflow-y: hidden;
+      // border: calc(1 * var(--onePxToRem)) solid red;
+
+      .LeftSideClosableTabs-container {
+        display: flex;
+        justify-content: space-between;
+        overflow-y: hidden;
+        transition: all 0.5s ease-out;
+
+        .ClosableTab-container {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: calc(5 * var(--onePxToRem)) calc(8 * var(--onePxToRem));
+          font-size: calc(12 * var(--onePxToRem));
+          height: 100%;
+          border-left: none;
+          color: rgb(139, 255, 197);
+          line-height: calc(12 * var(--onePxToRem));
+          // border: 1px solid red;
+
+          :nth-child(1) {
+            span {
+              :nth-child(1) {
+                visibility: visible;
+                margin-right: calc(2 * var(--onePxToRem));
+              }
+            }
+          }
+
+          :nth-child(2) {
+            :hover {
+              background-color: inherit;
+            }
+          }
+
+          :nth-child(3) {
+            color: white;
+          }
+
+          span {
+            text-align: center;
+            margin-right: calc(5 * var(--onePxToRem));
+
+            svg {
+              visibility: hidden;
+              margin-top: calc(2 * var(--onePxToRem));
+            }
+          }
+
+          .activeTab {
+            position: absolute;
+            content: '';
+            height: calc(1 * var(--onePxToRem));
+            background-color: palevioletred;
+            width: 100%;
+            top: 97%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+
+        .ClosableTab-container:hover {
+          span {
+            svg {
+              visibility: visible;
+            }
+          }
+        }
+
+      }
+
+      .RightSideClosableTabsActionIcons-container {
+        display: flex;
+        color: rgb(230, 230, 230);
+        // background-color: var(--editorAreaSidebarDrawableWindowBackgroundColor);
+        // height: 150%;
+
+        >* {
+          font-size: calc(14 * var(--onePxToRem));
+          margin: auto calc(10 * var(--onePxToRem));
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      height: calc(3 * var(--onePxToRem));
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background-color: currentColor;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border-radius: calc(8 * var(--onePxToRem));
+    }
+
+    .OpenedFilesTabContainer-container:hover> ::-webkit-scrollbar-thumb {
+      background-color: rgba(180, 180, 180, 0.4);
+    }
+
+    .BreadCrumbs-container {
+      display: flex;
+      flex-direction: row;
+      flex-basis: calc(15 * var(--onePxToRem));
+      background-color: #262335;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      // width: calc(100% - 150px);
+      width: calc(761 * var(--onePxToRem));
+      padding-bottom: 20px;
+      padding-left: 10px;
+      overflow-x: scroll;
+      overflow: hidden;
+      // border: 1px solid red;
+
+      >* {
+        display: flex;
+        font-size: 22px;
+        flex-direction: row;
+        padding-right: 2px;
+
+        span {
+          background-color: inherit;
+          padding-left: 2px;
+        }
+      }
+
+      :last-child {
+        :nth-child(3) {
+          display: none;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        height: calc(3 * var(--onePxToRem));
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background-color: currentColor;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: calc(8 * var(--onePxToRem));
+      }
+
+      :hover> ::-webkit-scrollbar-thumb {
+        background-color: rgba(180, 180, 180, 0.4);
+      }
+
+    }
+
+    .Editor-container {
+      // flex-basis: calc(100% - 90px);
+      height: calc(100% - 50px);
+      display: flex;
+      width: 100%;
+      background-color: #262335;
+      color: #ffffff73;
+      // border: 1px solid brown;
+
+      .LineNumberColumn-container {
+        flex-basis: 70px;
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        :hover {
+          color: #ffffffcc;
+        }
+      }
+
+      // all styles in CodingSpace folder's style.scss
+      .CodingSpace-container {
+        flex-basis: calc(100% - 70px);
+        // border: 1px solid lime;
+      }
+    }
+  }
+}
+
+.Content-container:hover {
+  cursor: pointer;
+
+  .Accordion-header {
+
+    .LeftSideActionIcons-container {
+      color: white;
+
+      span {
+        @include show-ellipses-for-long-text;
+      }
+    }
+
+    .RightSideActionIcons-container {
+      display: flex;
+      color: white;
+
+    }
+  }
+}

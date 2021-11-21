@@ -1,0 +1,1 @@
+for .scss files to work - installed `yarn add node-sass@4.14.1`
